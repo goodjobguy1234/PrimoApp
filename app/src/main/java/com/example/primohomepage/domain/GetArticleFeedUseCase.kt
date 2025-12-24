@@ -35,7 +35,8 @@ class GetArticleFeedUseCase @Inject constructor(
                 dateString = model.pubData ?: "", //todo format later
                 thumbnail = extractThumbnail(model.description ?: ""),
                 descriptionHtmlText = extractOnlyText(model.description ?: ""),
-                categories = model.categories ?: emptyList()
+                categories = model.categories ?: emptyList(),
+                detailLink = model.link ?: ""
             )
         } ?: emptyList()
     }

@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.primohomepage.R
 import com.example.primohomepage.databinding.ActivityHomeBinding
+import com.example.primohomepage.feature.detail.DetailWebViewActivity
 import com.example.primohomepage.feature.home.adapter.ArticleListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
@@ -22,7 +23,10 @@ class HomeActivity : AppCompatActivity() {
     private val viewModel: HomeViewModel by viewModels()
     private val articleAdapter: ArticleListAdapter by lazy {
         ArticleListAdapter {
-            //todo handle open next activity
+            DetailWebViewActivity.openScreen(
+                context = this@HomeActivity,
+                urlToLoad = it.detailLink
+            )
         }
     }
 

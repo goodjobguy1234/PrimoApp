@@ -8,5 +8,6 @@ data class ArticleModel(
     val dateString: String, //todo change it into other format
     val thumbnail: String,
     val descriptionHtmlText: String,
-    val categories: List<String>
+    val categories: List<String>,
+    val detailLink: String
 )
