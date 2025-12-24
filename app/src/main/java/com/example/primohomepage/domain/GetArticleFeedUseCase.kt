@@ -22,13 +22,19 @@ class GetArticleFeedUseCase @Inject constructor(
         return imageUrl ?: ""
     }
 
+    private fun extractOnlyText(html: String): String {
+        //remove figure entire block
+        val imgRegex = """(?s)<figure.*?>.*?</figure>""".toRegex()
+        return html.replace(imgRegex, "")
+    }
+
     private fun List<FeedItemData>?.toArticlesModel(): List<ArticleModel> {
         return this?.map { model ->
             ArticleModel(
                 title = model.title ?: "",
                 dateString = model.pubData ?: "", //todo format later
                 thumbnail = extractThumbnail(model.description ?: ""),
-                descriptionHtmlText = model.description ?: "",
+                descriptionHtmlText = extractOnlyText(model.description ?: ""),
                 categories = model.categories ?: emptyList()
             )
         } ?: emptyList()
