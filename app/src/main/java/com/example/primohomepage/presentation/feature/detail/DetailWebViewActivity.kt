@@ -4,11 +4,17 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.webkit.WebChromeClient
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import com.example.primohomepage.R
 import com.example.primohomepage.databinding.ActivityWebViewBinding
 
@@ -40,6 +46,22 @@ class DetailWebViewActivity : AppCompatActivity() {
             settings.loadsImagesAutomatically = true
 
             webChromeClient = WebChromeClient()
+            webViewClient = object : WebViewClient() {
+                override fun onReceivedError(
+                    view: WebView?,
+                    request: WebResourceRequest?,
+                    error: WebResourceError?
+                ) {
+                    // Only show error if it's for the main page (not a failing ad or tracking script)
+                    if (request?.isForMainFrame == true) {
+                        showError()
+                    }
+                }
+
+                private fun showError() = with(binding) {
+                    errorView.visibility = View.VISIBLE
+                }
+            }
             loadUrl(this@DetailWebViewActivity.url)
         }
     }
