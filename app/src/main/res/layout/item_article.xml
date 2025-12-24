@@ -19,7 +19,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_top_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
@@ -35,7 +35,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_top_toBottomOf="@+id/imageViewArticle"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewArticle"
             tools:text="Article Title Example" />
 
         <com.google.android.material.chip.ChipGroup
@@ -48,9 +48,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionTv"
-            app:layout_top_toBottomOf="@id/headerTitleTv">
-        </com.google.android.material.chip.ChipGroup>
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTv"/>
 
         <TextView
             android:id="@+id/descriptionTv"
@@ -63,7 +61,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewArticle"
-            app:layout_top_toBottomOf="@+id/chipGroupCategories"
             tools:text="Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here...Description goes here..." />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
