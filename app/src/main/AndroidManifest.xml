@@ -13,7 +13,7 @@
         android:theme="@style/Theme.PrimoHomePage"
         >
         <activity
-            android:name=".feature.home.HomeActivity"
+            android:name=".presentation.feature.home.HomeActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".feature.detail.DetailWebViewActivity"
+            android:name=".presentation.feature.detail.DetailWebViewActivity"
             android:exported="true" >
         </activity>
     </application>

@@ -1,4 +1,4 @@
-package com.example.primohomepage.feature.detail
+package com.example.primohomepage.presentation.feature.detail
 
 import android.annotation.SuppressLint
 import android.content.Context

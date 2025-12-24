@@ -1,4 +1,4 @@
-package com.example.primohomepage.feature.home
+package com.example.primohomepage.presentation.feature.home
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

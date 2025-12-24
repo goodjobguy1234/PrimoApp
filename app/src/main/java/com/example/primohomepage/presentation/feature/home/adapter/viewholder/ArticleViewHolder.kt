@@ -1,4 +1,4 @@
-package com.example.primohomepage.feature.home.adapter.viewholder
+package com.example.primohomepage.presentation.feature.home.adapter.viewholder
 
 import android.text.Html
 import androidx.recyclerview.widget.RecyclerView

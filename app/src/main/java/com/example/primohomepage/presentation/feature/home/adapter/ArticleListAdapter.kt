@@ -1,4 +1,4 @@
-package com.example.primohomepage.feature.home.adapter
+package com.example.primohomepage.presentation.feature.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.primohomepage.databinding.ItemArticleBinding
 import com.example.primohomepage.domain.model.ArticleModel
-import com.example.primohomepage.feature.home.adapter.viewholder.ArticleViewHolder
+import com.example.primohomepage.presentation.feature.home.adapter.viewholder.ArticleViewHolder
 
 class ArticleListAdapter(private val onItemClick: (ArticleModel) -> Unit) :
     ListAdapter<ArticleModel, ArticleViewHolder>(ArticleDiffCallback()) {

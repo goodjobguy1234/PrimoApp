@@ -1,4 +1,4 @@
-package com.example.primohomepage.feature.home
+package com.example.primohomepage.presentation.feature.home
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -11,8 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.primohomepage.R
 import com.example.primohomepage.databinding.ActivityHomeBinding
-import com.example.primohomepage.feature.detail.DetailWebViewActivity
-import com.example.primohomepage.feature.home.adapter.ArticleListAdapter
+import com.example.primohomepage.presentation.feature.detail.DetailWebViewActivity
+import com.example.primohomepage.presentation.feature.home.adapter.ArticleListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.launch
