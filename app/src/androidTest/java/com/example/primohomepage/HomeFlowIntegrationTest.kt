@@ -1,19 +1,17 @@
 package com.example.primohomepage
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import app.cash.turbine.test
 import com.example.primohomepage.data.PrimoFeedDao
 import com.example.primohomepage.data.PrimoFeedsRemoteDatasource
 import com.example.primohomepage.data.entity.PrimoFeedEntity
-import com.example.primohomepage.data.model.PrimoFeedDataResponse
 import com.example.primohomepage.data.repository.PrimoFeedsRepositoryImpl
 import com.example.primohomepage.domain.ArticleFeedsRepository
 import com.example.primohomepage.domain.GetArticleFeedUseCase
+import com.example.primohomepage.fake.FakeRemoteDataSource
 import com.example.primohomepage.presentation.feature.home.HomeViewModel
 import com.squareup.moshi.Moshi
-import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
@@ -29,7 +27,6 @@ import org.junit.After
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 
@@ -42,7 +39,6 @@ class HomeFlowIntegrationTest {
 
     private val testDispatcher = StandardTestDispatcher()
 
-    private val mockRemote = mockk<PrimoFeedsRemoteDatasource>(relaxed = true)
     private val mockDao = mockk<PrimoFeedDao>(relaxed = true)
     private val moshi = Moshi.Builder().build()
 
@@ -52,9 +48,10 @@ class HomeFlowIntegrationTest {
 
     @Before
     fun setup() {
+//noted This is a logic integration test. But due to problem of device-specific JVMTI agent restrictions on physical hardware it can't run some device
         Dispatchers.setMain(testDispatcher)
-
-        repository = PrimoFeedsRepositoryImpl(mockRemote, mockDao, moshi)
+        val fakeRemote = FakeRemoteDataSource(service = mockk(relaxed = true))
+        repository = PrimoFeedsRepositoryImpl(fakeRemote, mockDao, moshi)
         getArticleFeedUseCase = GetArticleFeedUseCase(repository)
 
         viewModel = HomeViewModel(
