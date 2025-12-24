@@ -4,30 +4,30 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.primohomepage.domain.ArticleFeedsRepository
+import com.example.primohomepage.domain.GetArticleFeedUseCase
+import com.example.primohomepage.domain.model.HomeScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository: ArticleFeedsRepository
+    private val getArticleFeedUseCase: GetArticleFeedUseCase
 ): ViewModel() {
     //todo for test -->
     //todo create state here with stateFlow then handle error case exception here
-    // UI State: Using a StateFlow to hold the list of articles
-//    private val _articles = MutableStateFlow<List<Article>>(emptyList())
-//    val articles: StateFlow<List<Article>> = _articles
-//
-//    // Loading State: Useful for showing a ProgressBar
-//    private val _isLoading = MutableStateFlow(false)
-//    val isLoading: StateFlow<Boolean> = _isLoading
+    // UI State: Using a StateFlow to hold the list of articleModels
+    private val _homeScreenState = MutableStateFlow<HomeScreenState>(HomeScreenState())
+    val homeScreenState: StateFlow<HomeScreenState> = _homeScreenState
 
     fun getFeeds() {
         viewModelScope.launch {
-            repository.getFeeds().onSuccess {
-                Log.d("json feeds success", it.toString())
-            }.onFailure {
-                it.localizedMessage?.let { it1 -> Log.d("json feeds failure", it1) }
+            try {
+                getArticleFeedUseCase()
+            } catch (e: Exception) {
+
             }
         }
     }

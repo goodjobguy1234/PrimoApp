@@ -10,7 +10,11 @@ class PrimoFeedsRepositoryImpl @Inject constructor(
 ): ArticleFeedsRepository {
     override suspend fun getFeeds(): Result<PrimoFeedDataResponse> {
         return runCatching {
-            remoteDatasource.getFeeds()
+            remoteDatasource.getFeeds().toArticleModel()
         }
+    }
+
+    private fun PrimoFeedDataResponse.toArticleModel():  {
+
     }
 }
