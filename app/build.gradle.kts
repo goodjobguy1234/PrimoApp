@@ -42,6 +42,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
 
     // unit test
     testImplementation(libs.junit)
@@ -56,7 +58,10 @@ dependencies {
 
     // api fetcher
     implementation(libs.retrofit)
-    implementation(libs.retrofit.converter.xml)
+    implementation(libs.retrofit.converter.xml) //for convert xml
+    implementation(libs.moshi.kotlin)
+    kapt(libs.moshi.kotlin.codegen)
+    implementation(libs.retrofit.converter.moshi)
 
     // image loader
     implementation(libs.glide)
@@ -66,4 +71,7 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx) // Provides Coroutine support (suspend functions)
     kapt(libs.androidx.room.compiler)
+
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 }
