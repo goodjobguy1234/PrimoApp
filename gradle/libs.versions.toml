@@ -15,6 +15,9 @@ activity = "1.12.1"
 constraintlayout = "2.2.1"
 moshi = "1.15.0"
 lifecycle = "2.8.7"
+turbine = "1.1.0"
+mockk = "1.13.13"
+coroutines = "1.7.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,6 +42,13 @@ moshi-kotlin-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-code
 retrofit-converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
+mockk-agent = { group = "io.mockk", name = "mockk-agent", version.ref = "mockk" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+androidx-room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
+androidx-arch-core-testing = { group = "androidx.arch.core", name = "core-testing", version = "2.2.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

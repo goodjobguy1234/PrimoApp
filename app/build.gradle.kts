@@ -39,6 +39,18 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/LICENSE.md"
+            excludes += "/META-INF/LICENSE-notice.md"
+            // Adding these common ones prevents future build errors with MockK/Coroutines
+            excludes += "META-INF/LICENSE*"
+            excludes += "META-INF/NOTICE*"
+            excludes += "META-INF/DEPENDENCIES"
+        }
+    }
 }
 
 dependencies {
@@ -51,6 +63,16 @@ dependencies {
 
     // unit test
     testImplementation(libs.junit)
+    // Integration Testing Dependencies
+    androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.androidx.room.testing)
+    androidTestImplementation(libs.androidx.arch.core.testing)
+    androidTestImplementation(libs.turbine)
+
+    // MockK for Unit tests too
+    androidTestImplementation(libs.mockk.agent)
+    testImplementation(libs.mockk)
 
     // instrumental test
     androidTestImplementation(libs.androidx.junit)
