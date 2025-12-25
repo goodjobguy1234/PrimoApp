@@ -65,14 +65,18 @@ dependencies {
     testImplementation(libs.junit)
     // Integration Testing Dependencies
     androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.mockk.agent)
     androidTestImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.room.testing)
     androidTestImplementation(libs.androidx.arch.core.testing)
     androidTestImplementation(libs.turbine)
 
     // MockK for Unit tests too
-    androidTestImplementation(libs.mockk.agent)
+    testImplementation(libs.mockk.agent)
     testImplementation(libs.mockk)
+    testImplementation(libs.turbine)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation("org.robolectric:robolectric:4.11.1")
 
     // instrumental test
     androidTestImplementation(libs.androidx.junit)
